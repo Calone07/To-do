@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import TodoInput from "./Components/TodoInput";
 import TodoList from "./Components/TodoList";
 import FilterTabs from "./Components/FilterTabs";
-import Footer from "./components/Footer";
+import Footer from "./Components/Footer";
 import "./styles.css"; // <- import external CSS
 
 function App() {
