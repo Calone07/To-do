@@ -1,7 +1,6 @@
+@import "tailwindcss";
 
-/* Light theme variables (default) */
 :root {
-  background-image: url(https://4kwallpapers.com/images/wallpapers/tropical-forest-waterfall-green-landscape-france-1920x1080-6087.jpg);
   --card-bg: #ffffff;
   --text-color: #1f2937;
   --text-gray: #6b7280;
@@ -11,77 +10,71 @@
   --blue-hover: #2563eb;
   --red: #ef4444;
   --red-hover: #dc2626;
+  --bg-color: #f3f4f6;
 }
 
-/* body.light {
-    background-image: url(https://4kwallpapers.com/images/wallpapers/tropical-forest-waterfall-green-landscape-france-1920x1080-6087.jpg);
-} */
-
-/* Dark theme variables */
 body.dark {
-
-background-color: #00030a;
-  --card-bg: #00030a;
+  --card-bg: #111827;
   --text-color: #f3f4f6;
   --text-gray: #d1d5db;
   --text-light-gray: #6b7280;
   --border-color: #374151;
-  --blue: #276ad6;
-  --blue-hover: #2563eb;
-  --red: #25e44e;
+  --blue: #3b82f6;
+  --blue-hover: #60a5fa;
+  --red: #f87171;
   --red-hover: #ef4444;
+  --bg-color: #030712;
 }
 
-/* Apply variables */
 body {
   background-color: var(--bg-color);
-  color: rgb(124, 91, 5);
+  color: var(--text-color);
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 0;
+}
 
-}   
+.app-container {
+  min-height: 100vh;
+  padding: 1rem;
+}
 
-/* Card */
 .card {
   background-color: var(--card-bg);
   border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
-
-  background-color: rgba(17, 24, 39, 0.6); /* dark semi-transparent */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  max-width: 600px;
+  margin: 2rem auto;
 }
 
-
-/* Header */
 .app-header {
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700;
-  color: green;
+  color: var(--text-color);
   margin-bottom: 1.5rem;
 }
 
-/* Input */
-.todo-input {
+.todo-input-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
 
+.todo-input {
   padding: 0.5rem 1rem;
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   font-size: 0.875rem;
-  background-color: rgb(245, 244, 243);
-  color: rgb(2, 2, 2);
-  margin-top: 15px;
-  margin-bottom: 35px;
-  margin-right: 5px;
-  margin-left: 40%;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  flex: 1;
 }
 
 .todo-input:focus {
   outline: none;
   border-color: var(--blue);
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
-
-  
 }
 
 .todo-add-btn {
@@ -92,14 +85,28 @@ body {
   border-radius: 15px;
   cursor: pointer;
   border: none;
-  margin-right: 10px;
+  white-space: nowrap;
 }
 
 .todo-add-btn:hover {
   background-color: var(--blue-hover);
 }
 
-/* Todo item */
+.theme-toggle-btn {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  color: var(--text-color);
+  font-weight: 500;
+  border-radius: 15px;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--border-color);
+}
+
 .todo-item {
   display: flex;
   justify-content: space-between;
@@ -107,94 +114,104 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
- 
-  
+  margin-bottom: 0.5rem;
+}
+
+.todo-item-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .todo-item-text {
   font-size: 0.875rem;
   cursor: pointer;
- 
+  color: var(--text-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .todo-item-text.completed {
   text-decoration: line-through;
-  color: yellow;
-
+  color: var(--text-light-gray);
 }
 
-/* Buttons */
-.todo-delete-btn {
-  font-size: 0.875rem;
-  color: var(--red);
-  cursor: pointer;
-}
-
-/* .todo-delete-btn:hover {
-  color: white;
-} */
-
-.todo-delete-btn:hover {
-  color: var(--red-hover);
-}
-
-/* Filter tabs */
 .filter-tabs {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
   margin-bottom: 1rem;
- 
 }
 
 .filter-btn {
   padding: 0.25rem 0.75rem;
   font-size: 0.875rem;
   border-radius: 9999px;
-  background-color: rgb(51, 94, 235);
+  background-color: var(--blue);
   color: white;
   cursor: pointer;
   border: none;
 }
 
 .filter-btn.active {
-  background-color: greenyellow;
-  color: rgb(15, 15, 15);
+  background-color: var(--text-color);
+  color: var(--card-bg);
 }
 
 .filter-btn:hover {
-  background-color: rgb(10, 10, 10);
+  opacity: 0.85;
 }
 
-/* Footer */
 .footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 1.5rem;
-  font-size: 1.5rem;
-  color: rgb(249, 248, 252);
+  font-size: 0.875rem;
+  color: var(--text-gray);
 }
 
 .footer button {
-  color: rgb(245, 241, 241);
+  color: var(--text-gray);
   cursor: pointer;
-  border: none;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
-  background-color: #2563eb;
+  background-color: transparent;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
 }
 
 .footer button:hover {
-  color: var(--red-hover);
+  color: var(--red);
+  border-color: var(--red);
 }
 
 .todo-item-actions {
   display: flex;
   gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.todo-delete-btn {
+  font-size: 0.875rem;
+  color: var(--red);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.todo-delete-btn:hover {
+  color: var(--red-hover);
 }
 
 .todo-edit-btn {
   font-size: 0.875rem;
-  color: #3b82f6; /* blue */
+  color: var(--blue);
   cursor: pointer;
   background: none;
   border: none;
@@ -203,6 +220,23 @@ body {
 }
 
 .todo-edit-btn:hover {
-  background-color: #e0f2fe; /* light blue background on hover */
-  transition: background-color 0.2s;
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

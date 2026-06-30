@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function TodoInput({ onAdd }) {
   const [text, setText] = useState("");
@@ -13,7 +13,9 @@ function TodoInput({ onAdd }) {
 
   return (
     <form onSubmit={handleSubmit} className="todo-input-form">
+      <label htmlFor="new-todo" className="sr-only">New task</label>
       <input
+        id="new-todo"
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
